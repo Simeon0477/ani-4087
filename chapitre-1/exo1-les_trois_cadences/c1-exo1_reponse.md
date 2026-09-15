@@ -1,4 +1,4 @@
-# Exercices — Deux yeux, deux images
+# Exercice — Les Trois Cadences
 
 ## Enoncé
 Calculez la durée d'une image à 72, 90 et 120 hertz, au dixième de milliseconde. Pour chacune, soustrayez les huit millisecondes que prennent les capteurs, la transmission, la composition et l'affichage, et dites ce qu'il reste à votre code.
