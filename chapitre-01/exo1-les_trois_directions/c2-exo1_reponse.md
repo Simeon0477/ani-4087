@@ -12,4 +12,7 @@ Pour le vecteur *(0.4, 0.6, 1)* nous obtenons :
     Haut : 0.6000
     Droite : 0.4000
 
+## Code
+[directions.cpp](./directions.cpp)
+
 
