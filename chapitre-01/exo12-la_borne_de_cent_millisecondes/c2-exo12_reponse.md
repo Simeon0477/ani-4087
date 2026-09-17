@@ -6,31 +6,27 @@ Extrapolez une pose de tête qui tourne à une vitesse réaliste, disons cent qu
 Comparez chaque résultat à la vraie pose, obtenue en simulant le mouvement pas à pas. Rendez la courbe de l'erreur et dites où la borne de cent millisecondes se justifie.
 
 ## Résultats
-Pour une longueur de bras de *0.3 m*, 
-et d'un avant-bras de  *0.25 m*
-et du quaternion de l'épaule *(0.1221, 0.4517, -0.4945, -0.7325)* 
+Pour une pose avec une position *(0, 0, 0)*
+et du quaternion *(0, 0, 0, 1)* 
 nous obtenons :
 
-    --- Bras au repos ---
-    Coude : 0.3000  0.0000  0.0000
-    Main  : 0.5500  0.0000  0.0000
+    dt (ms)   extrapole (deg)   vrai (deg)   erreur (deg)
+    10.0000            1.8000       1.7703         0.0297
+    20.0000            3.6000       3.4826         0.1174
+    50.0000            9.0000       8.2900         0.7100
+    100.0000           18.0000      15.3073         2.6927
+    200.0000           36.0000      26.2755         9.7245
+    300.0000           54.0000      34.1345        19.8655
+    500.0000           90.0000      43.8007        46.1993
+    750.0000          135.0000      49.5674        85.4326
+    1000.0000          180.0000      52.0736       127.9264
 
-    Entrez le quaternion de rotation de l'epaule (qx qy qz qw)
-    0.1221
-    0.4517
-    -0.4945
-    -0.7325
+## Graphique
+![resultats.png](./resultats.png)
 
-    --- Apres rotation de l'epaule ---
-    Coude : 0.0309  0.2504  0.1623
-    Main  : 0.0566  0.4591  0.2975
-
-    --- Verification (longueurs conservees) ---
-    Epaule-Coude  avant : 0.3000   apres : 0.3000
-    Coude-Main    avant : 0.2500   apres : 0.2500
-
-Les orientations du coude et la main suivent effectivement le mouvement de l'épaule tout en conservant leurs longueurs respecitves.
+Nous observons donc qu'en dessous des 100 millisecondes l'erreur reste en dessous des 3°, mais au dessus elle explose jusqu'à atteindre 127.92°. Voici donc la justification de la borne à 100 millisecondes.
 
 ## Code
-[bras.cpp](./bras.cpp)
+[la_borne.cpp](./la_borne.cpp)
+[graphique.ipynb](./graphique.ipynb)
 
