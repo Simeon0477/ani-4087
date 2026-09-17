@@ -106,9 +106,9 @@ double EcartMax(const Mat4 &a, const Mat4 &b) {
 
 int main() {
     Pose pose;
-    cout << "Entrez la position (x y z) " << endl;
+    cout << "Entrez la position de la pose " << endl;
     cin >> pose.position.x >> pose.position.y >> pose.position.z;
-    cout << "Entrez le quaternion unitaire (qx qy qz qw) " << endl;
+    cout << "Entrez le quaternion unitaire de la pose " << endl;
     cin >> pose.orientation.x >> pose.orientation.y
         >> pose.orientation.z >> pose.orientation.w;
 
