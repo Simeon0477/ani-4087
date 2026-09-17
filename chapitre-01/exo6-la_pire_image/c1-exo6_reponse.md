@@ -5,5 +5,12 @@ Prenez n'importe quel programme à vous qui dessine en boucle, ou écrivez-en un
 
 Rendez les deux chiffres, et dites si votre programme tiendrait dans un casque.
 
-## Mesures
+## Résultats
+| Mesure | Valeur |
+|---|---|
+| Plus longue Image | 0.4651 ms |
+| Images > 11 ms | 0 sur 1000 |
+
+## Conclusion
+A cause de notre simulation très loin de la réalité, nous n'obtenons aucune données révélatrice nous permettant de bien observer ce problème.
 
