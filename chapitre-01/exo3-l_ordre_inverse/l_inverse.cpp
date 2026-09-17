@@ -96,7 +96,7 @@ int main() {
          << " " << translationDabord.y << "\n"
          << "Z :  " 
          << " " << translationDabord.z << "\n"
-         << "\n";;
+         << "\n";
 
     return 0;
 }
