@@ -48,5 +48,6 @@ nous obtenons :
 
 Au vu de l'écart quasi nul, nous pouvons donc conclure que la composition est équivalente à l'application successive des deux poses.
 
-[pose_inverse.cpp](./pose_inverse.cpp)
+## Code
+[composition.cpp](./composition.cpp)
 
