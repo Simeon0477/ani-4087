@@ -8,7 +8,7 @@ Rendez les deux chiffres, et dites si votre programme tiendrait dans un casque.
 ## Résultats
 | Mesure | Valeur |
 |---|---|
-| Plus longue Image | 0.4651 ms |
+| Plus longue Image | 4.651 ms |
 | Images > 11 ms | 0 sur 1000 |
 
 ## Conclusion
