@@ -30,7 +30,7 @@ Avec des échelles, la réalité ne peut pas être retransmise de façon effecti
 
 ## Témoignages 
 
-### Chance
+### Dimitry
 
  Dimitry a dit :
 
