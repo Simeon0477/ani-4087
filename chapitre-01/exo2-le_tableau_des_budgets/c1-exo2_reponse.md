@@ -6,7 +6,7 @@ Reprenez le tableau des cinq étapes du chapitre. Pour chacune, cherchez une sou
 ## Données relevées :
  - **Mesure du mouvement** : 4 millisecondes (1 milliseconde pour le *Meta Quest 3*)
  - **Transmission de la mesure** : /
- - **Prise de décision et dessin** : 8 - 15 millisecondes
+ - **Prise de décision et dessin** : 8 ~ 15 millisecondes
  - **Assemblage pas le compositeur** : /
  - **Affichage par l'écran** : 2 millisecondes pour les écrans OLED et de 3 à 7 millisecondes pour les LCD selon l'utilisation ou non de la technologie overdrive
 
