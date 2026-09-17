@@ -6,31 +6,28 @@
 Puis retirez le forçage et trouvez deux quaternions pour lesquels le résultat devient absurde. Rendez les deux valeurs, avec et sans.
 
 ## Résultats
-Pour une longueur de bras de *0.3 m*, 
-et d'un avant-bras de  *0.25 m*
-et du quaternion de l'épaule *(0.1221, 0.4517, -0.4945, -0.7325)* 
+Pour un quaternion q1 *(0, 0, 0, 1)*, 
+et quaternion q2  *(0,0,-0.0049999,-0.9999875)*
+et d'un *dt = 0.01 secondes* 
 nous obtenons :
 
-    --- Bras au repos ---
-    Coude : 0.3000  0.0000  0.0000
-    Main  : 0.5500  0.0000  0.0000
+    Entrez q1 (x y z w)
+    0
+    0
+    0
+    1
+    Entrez q2 (x y z w)
+    0
+    0
+    -0.0049999
+    -0.9999875
+    Entrez dt, en secondes
+    0.01
+    Sans forcage : 0.0000  0.0000  -627.3079   (norme : 627.3079 rad/s)
+    Avec forcage : 0.0000  -0.0000  1.0000   (norme : 1.0000 rad/s)
 
-    Entrez le quaternion de rotation de l'epaule (qx qy qz qw)
-    0.1221
-    0.4517
-    -0.4945
-    -0.7325
-
-    --- Apres rotation de l'epaule ---
-    Coude : 0.0309  0.2504  0.1623
-    Main  : 0.0566  0.4591  0.2975
-
-    --- Verification (longueurs conservees) ---
-    Epaule-Coude  avant : 0.3000   apres : 0.3000
-    Coude-Main    avant : 0.2500   apres : 0.2500
-
-Les orientations du coude et la main suivent effectivement le mouvement de l'épaule tout en conservant leurs longueurs respecitves.
+Sans forçage nous constatons donc une explosion de la norme, comme si la personne avait fait des tours complets en plus sur un petit mouvement, d'où l'importance de la recherche du chemin le plus court.
 
 ## Code
-[bras.cpp](./bras.cpp)
+[chemin_court.cpp](./chemin_court.cpp)
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+
 using namespace std;
 
 struct Vec3D { double x, y, z; };
