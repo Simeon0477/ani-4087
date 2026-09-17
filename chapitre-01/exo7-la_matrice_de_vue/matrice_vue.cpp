@@ -1,19 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-
-#define LONGUEUR_BRAS 0.30      
-#define LONGUEUR_AVANT_BRAS 0.25
-
 using namespace std;
 
 struct Vec3D { double x, y, z; };
 struct Quat  { double x, y, z, w; };
 struct Pose  { Vec3D position; Quat orientation; };
+struct Mat4  { double m[4][4]; };
 
-Vec3D operator+(const Vec3D &a, const Vec3D &b) { return {a.x+b.x, a.y+b.y, a.z+b.z}; }
-Vec3D operator-(const Vec3D &a, const Vec3D &b) { return {a.x-b.x, a.y-b.y, a.z-b.z}; }
-double Norme(const Vec3D &v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
+Vec3D operator-(const Vec3D &a) { return {-a.x, -a.y, -a.z}; }
 
 Vec3D Tourner(const Quat &q, const Vec3D &v) {
     Vec3D qv{q.x, q.y, q.z};
@@ -32,73 +27,120 @@ Vec3D Tourner(const Quat &q, const Vec3D &v) {
             v.z + q.w*t.z + qCrossT.z};
 }
 
-// Application de la pose : rotation puis translation.
-Vec3D AppliquerPose(const Pose &p, const Vec3D &v) {
-    return Tourner(p.orientation, v) + p.position;
+// Conjugue du quaternion, position opposee tournee par ce conjugue.
+Pose InverserAnalytique(const Pose &p) {
+    Quat conj{-p.orientation.x, -p.orientation.y, -p.orientation.z, p.orientation.w};
+    Vec3D posInv = Tourner(conj, -p.position);
+    return {posInv, conj};
 }
 
-// Produit de Hamilton : QuatMul(a, b) tourne par b, puis par a.
-Quat QuatMul(const Quat &a, const Quat &b) {
-    return {
-        a.w*b.x + a.x*b.w + a.y*b.z - a.z*b.y,
-        a.w*b.y - a.x*b.z + a.y*b.w + a.z*b.x,
-        a.w*b.z + a.x*b.y - a.y*b.x + a.z*b.w,
-        a.w*b.w - a.x*b.x - a.y*b.y - a.z*b.z
-    };
+// Pose (position + quaternion UNITAIRE suppose) -> matrice homogene 4x4.
+Mat4 PoseVersMatrice(const Pose &p) {
+    double x = p.orientation.x, y = p.orientation.y, z = p.orientation.z, w = p.orientation.w;
+    Mat4 r;
+    r.m[0][0] = 1 - 2*(y*y + z*z); r.m[0][1] = 2*(x*y - w*z);     r.m[0][2] = 2*(x*z + w*y);     r.m[0][3] = p.position.x;
+    r.m[1][0] = 2*(x*y + w*z);     r.m[1][1] = 1 - 2*(x*x + z*z); r.m[1][2] = 2*(y*z - w*x);     r.m[1][3] = p.position.y;
+    r.m[2][0] = 2*(x*z - w*y);     r.m[2][1] = 2*(y*z + w*x);     r.m[2][2] = 1 - 2*(x*x + y*y); r.m[2][3] = p.position.z;
+    r.m[3][0] = 0;                 r.m[3][1] = 0;                 r.m[3][2] = 0;                 r.m[3][3] = 1;
+    return r;
 }
 
-// Compose deux poses : l'enfant est exprime dans le repere du parent.
-Pose ComposerPose(const Pose &parent, const Pose &enfant) {
-    return { Tourner(parent.orientation, enfant.position) + parent.position,
-             QuatMul(parent.orientation, enfant.orientation) };
+Mat4 Identite4() {
+    Mat4 id{};
+    for (int i = 0; i < 4; i++) id.m[i][i] = 1.0;
+    return id;
 }
 
-void AfficherPosition(const string &nom, const Vec3D &p) {
-    cout << nom << " : "
-         << p.x << "  " << p.y << "  " << p.z << "\n";
+// Inversion generale par Gauss-Jordan avec pivot partiel.
+Mat4 InverserGenerale(const Mat4 &in) {
+    const double EPS = 1e-9;
+    double a[4][8];
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) a[i][j] = in.m[i][j];
+        for (int j = 0; j < 4; j++) a[i][4+j] = (i == j) ? 1.0 : 0.0;
+    }
+
+    for (int col = 0; col < 4; col++) {
+        int pivotRow = col;
+        double maxVal = fabs(a[col][col]);
+        for (int r = col + 1; r < 4; r++) {
+            if (fabs(a[r][col]) > maxVal) { maxVal = fabs(a[r][col]); pivotRow = r; }
+        }
+        if (maxVal < EPS) {
+            return Identite4(); 
+        }
+        if (pivotRow != col) {
+            for (int j = 0; j < 8; j++) swap(a[col][j], a[pivotRow][j]);
+        }
+        double pivot = a[col][col];
+        for (int j = 0; j < 8; j++) a[col][j] /= pivot;
+        for (int r = 0; r < 4; r++) {
+            if (r == col) continue;
+            double facteur = a[r][col];
+            for (int j = 0; j < 8; j++) a[r][j] -= facteur * a[col][j];
+        }
+    }
+
+    Mat4 out;
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            out.m[i][j] = a[i][4+j];
+    return out;
+}
+
+void Afficher(const string &nom, const Mat4 &mat) {
+    cout << nom << " :\n";
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) cout << setw(10) << mat.m[i][j];
+        cout << "\n";
+    }
+}
+
+double EcartMax(const Mat4 &a, const Mat4 &b) {
+    double maxEcart = 0.0;
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            maxEcart = max(maxEcart, fabs(a.m[i][j] - b.m[i][j]));
+    return maxEcart;
 }
 
 int main() {
-    const Quat IDENTITE{0.0, 0.0, 0.0, 1.0};
-
-    // Poses LOCALES fixes, exprimees dans le repere du parent respectif.
-    Pose coudeLocal{ {LONGUEUR_BRAS, 0.0, 0.0}, IDENTITE };
-    Pose mainLocal{ {LONGUEUR_AVANT_BRAS, 0.0, 0.0}, IDENTITE };
+    Pose pose;
+    cout << "Entrez la position (x y z) " << endl;
+    cin >> pose.position.x >> pose.position.y >> pose.position.z;
+    cout << "Entrez le quaternion unitaire (qx qy qz qw) " << endl;
+    cin >> pose.orientation.x >> pose.orientation.y
+        >> pose.orientation.z >> pose.orientation.w;
 
     cout << fixed << setprecision(4);
 
-    // --- Bras au repos : epaule sans rotation ---
-    Pose epauleRepos{ {0.0, 0.0, 0.0}, IDENTITE };
-    Pose coudeMondeRepos = ComposerPose(epauleRepos, coudeLocal);
-    Pose mainMondeRepos  = ComposerPose(coudeMondeRepos, mainLocal);
+    Mat4 matricePose = PoseVersMatrice(pose);
+    Mat4 inverseGenerale = InverserGenerale(matricePose);
+    Mat4 inverseAnalytique = PoseVersMatrice(InverserAnalytique(pose));
 
-    cout << "--- Bras au repos ---\n";
-    AfficherPosition("Coude", coudeMondeRepos.position);
-    AfficherPosition("Main ", mainMondeRepos.position);
+    cout << "\n=== Comparaison sur une pose valide ===\n\n";
+    Afficher("Inversion generale (Gauss-Jordan)", inverseGenerale);
     cout << "\n";
+    Afficher("Inversion analytique (conjugue + translation opposee)", inverseAnalytique);
+    cout << "\nEcart maximum sur les seize coefficients : "
+         << EcartMax(inverseGenerale, inverseAnalytique) << "\n";
 
-    // --- On fait tourner l'epaule ---
-    cout << "Entrez le quaternion de rotation de l'epaule (qx qy qz qw) " << endl;
-    Quat rotationEpaule;
-    cin >> rotationEpaule.x >> rotationEpaule.y >> rotationEpaule.z >> rotationEpaule.w;
+    // --- Pose degeneree : deux lignes identiques -> matrice singuliere.
 
-    Pose epauleTournee{ {0.0, 0.0, 0.0}, rotationEpaule };
-    Pose coudeMondeTourne = ComposerPose(epauleTournee, coudeLocal);
-    Pose mainMondeTournee = ComposerPose(coudeMondeTourne, mainLocal);
+    Mat4 poseDegeneree{{
+        {1, 0, 0, 5},
+        {0, 1, 0, 3},
+        {0, 1, 0, 3},   
+        {0, 0, 0, 1}
+    }};
 
-    cout << "\n--- Apres rotation de l'epaule ---\n";
-    AfficherPosition("Coude", coudeMondeTourne.position);
-    AfficherPosition("Main ", mainMondeTournee.position);
-
-    // --- Verification : la main "suit" -> le bras reste rigide.
-    double avant1 = Norme(coudeMondeRepos.position);
-    double avant2 = Norme(mainMondeRepos.position - coudeMondeRepos.position);
-    double apres1 = Norme(coudeMondeTourne.position);
-    double apres2 = Norme(mainMondeTournee.position - coudeMondeTourne.position);
-
-    cout << "\n--- Verification (longueurs conservees) ---\n";
-    cout << "Epaule-Coude  avant : " << avant1 << "   apres : " << apres1 << "\n";
-    cout << "Coude-Main    avant : " << avant2 << "   apres : " << apres2 << "\n";
+    cout << "\n=== Pose degeneree passee a l'inversion generale ===\n\n";
+    Afficher("Matrice degeneree (rang deficient)", poseDegeneree);
+    cout << "\n";
+    Afficher("Ce que rend InverserGenerale", InverserGenerale(poseDegeneree));
+    cout << "\nAucune erreur, aucun message : la fonction rend l'identite\n"
+            "comme si la pose etait neutre, alors que la matrice d'entree\n"
+            "ne represente aucune transformation valide.\n";
 
     return 0;
 }

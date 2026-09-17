@@ -8,7 +8,7 @@ Reprenez le tableau des cinq étapes du chapitre. Pour chacune, cherchez une sou
  - **Transmission de la mesure** : /
  - **Prise de décision et dessin** : 8 - 15 millisecondes
  - **Assemblage pas le compositeur** : /
- - **Affichage par l'écran** : -2 millisecondes pour les écrans OLED et de 3 à 7 millisecondes pour les LCD selon l'utilisation ou non de la technologie overdrive
+ - **Affichage par l'écran** : 2 millisecondes pour les écrans OLED et de 3 à 7 millisecondes pour les LCD selon l'utilisation ou non de la technologie overdrive
 
 ## Sources : 
 https://gdepark.com/fr/7-key-factors-causing-motion-to-photon-latency-in-9d-vr-systems/
