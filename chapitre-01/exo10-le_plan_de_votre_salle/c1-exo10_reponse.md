@@ -8,9 +8,9 @@ Donnez les dimensions en mètres, pas en unités arbitraires. Une porte fait deu
 ## Dimensions
 
  - Salle : *5 m (Longueur) * 4 m (Largeur) * 3.5 m (hauteur)*
- - Porte : *1.5 m (Longueur) * 1 m (Largeur) * 0.8 m (hauteur)*
+ - Table : *1.5 m (Longueur) * 1 m (Largeur) * 0.8 m (hauteur)*
  - Porte : *1 m (Largeur) * 2 m (hauteur)*
- - Porte : *1.5 m (Largeur) * 1.25 m (hauteur)*
+ - Fenêtre : *1.5 m (Largeur) * 1.25 m (hauteur)*
 
 ## Plan
 Avec une échelle de *2 cm* pour *1 mètre*
