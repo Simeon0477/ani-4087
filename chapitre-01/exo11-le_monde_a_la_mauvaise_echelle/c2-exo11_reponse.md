@@ -6,31 +6,28 @@
 Faites décrire la salle à trois personnes pour trois facteurs différents, sans leur dire lequel, et notez leurs mots. Rendez les trois descriptions.
 
 ## Résultats
-Pour une longueur de bras de *0.3 m*, 
-et d'un avant-bras de  *0.25 m*
-et du quaternion de l'épaule *(0.1221, 0.4517, -0.4945, -0.7325)* 
+Pour une longueur de *5.0 m*, 
+une largeur de  *4.0 m*;
+une hauteur de *3.5O m* (Du sol au plafond) et 
+d'une échelle de *2*,
 nous obtenons :
 
-    --- Bras au repos ---
-    Coude : 0.3000  0.0000  0.0000
-    Main  : 0.5500  0.0000  0.0000
+    Salle a l'echelle 2 :
+    Salle : 8.00 x 10.00 m, plafond a 7.00 m
+    - Table : 2.40 x 1.50 x 1.50 m
+    - Chaise : 0.90 x 0.90 x 1.80 m
+    - Porte : 1.80 x 0.10 x 4.00 m
 
-    Entrez le quaternion de rotation de l'epaule (qx qy qz qw)
-    0.1221
-    0.4517
-    -0.4945
-    -0.7325
+A une échelle d'un :
 
-    --- Apres rotation de l'epaule ---
-    Coude : 0.0309  0.2504  0.1623
-    Main  : 0.0566  0.4591  0.2975
+    Salle a l'echelle 1 :
+    Salle : 4.00 x 5.00 m, plafond a 3.50 m
+    - Table : 1.20 x 0.75 x 0.75 m
+    - Chaise : 0.45 x 0.45 x 0.90 m
+    - Porte : 0.90 x 0.05 x 2.00 m
 
-    --- Verification (longueurs conservees) ---
-    Epaule-Coude  avant : 0.3000   apres : 0.3000
-    Coude-Main    avant : 0.2500   apres : 0.2500
-
-Les orientations du coude et la main suivent effectivement le mouvement de l'épaule tout en conservant leurs longueurs respecitves.
+Avec des échelles, la réalité ne peut pas être retransmise de façon effective, le but de la VR c'est une immersion dans un monde dont le joueur est habitué, donner des dimensions différentes alors que le corps du joueur est inchangeant, cela cause des divergences sensorielles et perceptives, d'où l'utilisation stricte du mètre.
 
 ## Code
-[bras.cpp](./bras.cpp)
+[le_monde.cpp](./le_monde.cpp)
 

@@ -6,22 +6,22 @@ using namespace std;
 
 struct Meuble {
     string nom;
-    double largeur, profondeur, hauteur;
+    double largeur, longueur, hauteur;
 };
 
 struct Salle {
-    double largeur, profondeur, hauteurPlafond;
+    double largeur, longueur, hauteurPlafond;
     vector<Meuble> mobilier;
 };
 
 Meuble MettreAEchelle(const Meuble &m, double facteur) {
-    return { m.nom, m.largeur * facteur, m.profondeur * facteur, m.hauteur * facteur };
+    return { m.nom, m.largeur * facteur, m.longueur * facteur, m.hauteur * facteur };
 }
 
 Salle MettreAEchelle(const Salle &s, double facteur) {
     Salle resultat;
     resultat.largeur = s.largeur * facteur;
-    resultat.profondeur = s.profondeur * facteur;
+    resultat.longueur = s.longueur * facteur;
     resultat.hauteurPlafond = s.hauteurPlafond * facteur;
     for (const Meuble &m : s.mobilier)
         resultat.mobilier.push_back(MettreAEchelle(m, facteur));
@@ -30,19 +30,19 @@ Salle MettreAEchelle(const Salle &s, double facteur) {
 
 void AfficherSalle(const Salle &s) {
     cout << fixed << setprecision(2);
-    cout << "Salle : " << s.largeur << " x " << s.profondeur
+    cout << "Salle : " << s.largeur << " x " << s.longueur
          << " m, plafond a " << s.hauteurPlafond << " m\n";
     for (const Meuble &m : s.mobilier) {
         cout << "  - " << m.nom << " : " << m.largeur << " x "
-             << m.profondeur << " x " << m.hauteur << " m\n";
+             << m.longueur << " x " << m.hauteur << " m\n";
     }
 }
 
 int main() {
     Salle salleReference;
     salleReference.largeur = 4.00;
-    salleReference.profondeur = 5.00;
-    salleReference.hauteurPlafond = 2.50;
+    salleReference.longueur = 5.00;
+    salleReference.hauteurPlafond = 3.50;
     salleReference.mobilier = {
         { "Table",  1.20, 0.75, 0.75 },
         { "Chaise", 0.45, 0.45, 0.90 },
