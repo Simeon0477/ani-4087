@@ -36,7 +36,7 @@ nous obtenons :
 
     Ecart : 0.0001
 
-L'écart entre les deux est extrement négligeable 
+L'écart entre les deux est extrement négligeable, on peut donc affirmer que notre fonction InversePose fonctionne.
 
 [pose_inverse.cpp](./pose_inverse.cpp)
 
