@@ -6,31 +6,91 @@
 Votre programme lit une pose, ses deux vitesses et une durée, et affiche la pose extrapolée. Traitez le cas d'une vitesse angulaire nulle sans diviser par zéro.
 
 ## Résultats
-Pour une longueur de bras de *0.3 m*, 
-et d'un avant-bras de  *0.25 m*
-et du quaternion de l'épaule *(0.1221, 0.4517, -0.4945, -0.7325)* 
+Pour la pose constituée de la position *(-1, 0, 2)*
+et du quaternion *(0.1221, 0.4517, -0.4945, -0.7325)*, 
+une vitesse linéaire *(1, 1, 2)*, une vitesse angulaire *(0, 0.2, 0.56)* et un *dt = 2 secondes*
 nous obtenons :
 
-    --- Bras au repos ---
-    Coude : 0.3000  0.0000  0.0000
-    Main  : 0.5500  0.0000  0.0000
-
-    Entrez le quaternion de rotation de l'epaule (qx qy qz qw)
+    Entrez la position de la pose
+    -1
+    0
+    2
+    Entrez le quaternion unitaire de la pose
     0.1221
     0.4517
     -0.4945
     -0.7325
+    Entrez la vitesse lineaire, m/s (x y z)
+    1
+    1
+    2
+    Entrez la vitesse angulaire, rad/s (x y z)
+    0
+    0.2
+    0.56
+    Entrez dt, en secondes
+    2
 
-    --- Apres rotation de l'epaule ---
-    Coude : 0.0309  0.2504  0.1623
-    Main  : 0.0566  0.4591  0.2975
+    Pose extrapolee :
+    Position   : 1.0000  2.0000  6.0000
+    Quaternion : -0.2303  0.3006  -0.8191  -0.4310
 
-    --- Verification (longueurs conservees) ---
-    Epaule-Coude  avant : 0.3000   apres : 0.3000
-    Coude-Main    avant : 0.2500   apres : 0.2500
+Avec une vitesse angulaire nulle :
 
-Les orientations du coude et la main suivent effectivement le mouvement de l'épaule tout en conservant leurs longueurs respecitves.
+    Entrez la position de la pose
+    -1
+    0
+    2
+    Entrez le quaternion unitaire de la pose
+    0.1221
+    0.4517
+    -0.4945
+    -0.7325
+    Entrez la vitesse lineaire, m/s (x y z)
+    0
+    0.2
+    0.56
+    Entrez la vitesse angulaire, rad/s (x y z)
+    0
+    0
+    0
+    Entrez dt, en secondes
+    2
+
+    Pose extrapolee :
+    Position   : -1.0000  0.4000  3.1200
+    Quaternion : 0.1221  0.4517  -0.4945  -0.7325
+
+Il y'a conservation des orientations en cas de vitesse angulaire nulle.
+
+Avec un *dt = 20 s* :
+
+    Entrez la position de la pose
+    -1
+    0
+    2
+    Entrez le quaternion unitaire de la pose
+    0.1221
+    0.4517
+    -0.4945
+    -0.7325
+    Entrez la vitesse lineaire, m/s (x y z)
+    0
+    0.2
+    0.56
+    Entrez la vitesse angulaire, rad/s (x y z)
+    1
+    1
+    2
+    Entrez dt, en secondes
+    20
+
+    Pose extrapolee :
+    Position   : -1.0000  4.0000  13.2000
+    Quaternion : 0.6160  0.3614  -0.1213  -0.6894
+
+La question à se poser maintenant est de savoir si le corps conservera le même mouvement sur plus de 20 secondes, ce qui est fort improbable, c'est pour cela qu'il est dit que le modèle à vitesse constante ment plus qu'il n'aide.
 
 ## Code
-[bras.cpp](./bras.cpp)
+[extrapolation](./extrapolation.cpp)
 
