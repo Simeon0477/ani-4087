@@ -8,12 +8,12 @@ Le quaternion est donné par ses quatre composantes, déjà normalisé. Votre pr
 ## Résultats
 Pour le vecteur *(0.4, 0.6, 1)*, 
 avec la pose constitué de la position *(-1, 0, 2)*
-et du quaternion *(0.2, 0.74, -0.81, -1.2)*,
+et du quaternion *(0.1221, 0.4517, -0.4945, -0.7325)* (Quarternion unitaire),
 nous obtenons :
 
-    X : -4.6518
-    Y : -0.0581
-    Z :  1.3983
+    X : -2.1098
+    Y : 0.3547
+    Z :  2.4031
 
 ## Code
 [la_pose.cpp](./la_pose.cpp)
