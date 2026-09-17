@@ -28,6 +28,26 @@ A une échelle d'un :
 
 Avec des échelles, la réalité ne peut pas être retransmise de façon effective, le but de la VR c'est une immersion dans un monde dont le joueur est habitué, donner des dimensions différentes alors que le corps du joueur est inchangeant, cela cause des divergences sensorielles et perceptives, d'où l'utilisation stricte du mètre.
 
+## Témoignages 
+
+### Chance
+
+ Dimitry a dit :
+
+ > La salle-ci est à bonnes dimensions. Le plafond est très haut, je ne l'atteins pas même en sautant. La salle m'irait à merveille.
+
+ ### Mesmine
+
+ Mesmine a dit :
+
+ > Ici les dimensions sont normales, je ne sens pas vraiment le problème. La table est à la bonne hauteur, la chaise aussi, et la porte ressemble à une porte normale.
+
+ ### Kevin
+
+ Kevin a dit :
+
+ > La salle ci ferait une salle de classe parfaite, elle est plus grande que la nôtre.
+
 ## Code
 [le_monde.cpp](./le_monde.cpp)
 
