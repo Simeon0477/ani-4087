@@ -71,5 +71,4 @@ with project("MaSalle"):
     #             optimisation et consolidation générale.
 ```
 
-## Conclusion
 
