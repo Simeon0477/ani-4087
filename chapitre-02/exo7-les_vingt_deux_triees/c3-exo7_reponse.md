@@ -2,7 +2,7 @@
 
 ## Énoncé
 
-Prenez la liste des vingt-trois dépendances de la démonstration du moteur et classez-la en trois groupes : celles dont le nom suffit à deviner le rôle, celles dont vous avez une idée sans certitude, celles dont vous ne savez rien.
+Prenez la liste des vingt-deux dépendances de la démonstration du moteur et classez-la en trois groupes : celles dont le nom suffit à deviner le rôle, celles dont vous avez une idée sans certitude, celles dont vous ne savez rien.
 
 Pour ce troisième groupe, ouvrez l'en-tête principal de chaque module et rendez une phrase par module.
 
@@ -25,16 +25,15 @@ Voici la liste des dépendances de **NKXRDemo** :
 
 ### *1 - Facile à deviner :*
 
- - **NKXR** : réalité virtuelle / XR
  - **NKRenderer** : Rendu graphique
  - **NKSerialization** : Sérialisation des données
- - **NKRéflexion** : Réflexion
+ - **NKReflection** : Réflexion
  - **NKFileSystem** : système de fichiers
  - **NKFont** : Gestion des mises en forme du texte
  - **NKImage** : Gestion des images
  - **NKEvent** : Gestion des évènements
- - **NKWindows** : Gestion des fenêtres
- - **NKMaths** : Fonctions mathématiques
+ - **NKWindow** : Gestion des fenêtres
+ - **NKMath** : Fonctions mathématiques
  - **NKTime** : Gestion du temps
  - **NKLogger** : Gestion des logs
  - **NKStream** : Gestion des flux
