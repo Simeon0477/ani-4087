@@ -1,4 +1,4 @@
-# Exercice - Le Fichier de Porjet Lu en Entier
+# Exercice - Le Fichier de Projet Lu en Entier
 ## Énoncé
  
 Ouvrez le fichier de projet de la démonstration XR du moteur et lisez-le en entier, y compris les commentaires.
