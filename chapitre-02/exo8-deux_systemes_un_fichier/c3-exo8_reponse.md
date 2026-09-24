@@ -151,5 +151,6 @@ Cannot create builder: No suitable toolchain found for Windows x86_64
 
 ## Conclusion
 
-Comme nous le pensions, c'est grâce à *filter* que **Jenga** peut déployer un seul programme pour plusieurs systèmes différents.
+Nous avons pu tester notre  programme sous Windows et constaté qu'il fonctionne sans encombre, cependant, lors du test sous Linux, le build a été un succès mais l'exécution a échoué a cause d'une absence de Toolchain pour Windows.
+La question à se poser est donc pourquoi malgré le filtre notre programme demande toujours une chaine d'outils Windows?
  
