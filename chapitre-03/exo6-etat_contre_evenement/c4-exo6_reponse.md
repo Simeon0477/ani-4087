@@ -40,7 +40,10 @@ int nkmain(const nkentseu::NkEntryState &state)
             }
 
             if(event->Is<nkentseu::NkKeyPressEvent>()){
-                count_2++;
+                auto* keyEvent = static_cast<nkentseu::NkKeyPressEvent*>(event);
+                if(keyEvent->GetKey() == nkentseu::NkKey::NK_SPACE) {
+                    count_2++;
+                }
             }
 
         }

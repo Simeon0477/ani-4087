@@ -46,7 +46,10 @@ int nkmain(const nkentseu::NkEntryState &state)
             }
 
             if(event->Is<nkentseu::NkKeyPressEvent>()){
-                running = false;
+                auto* keyEvent = static_cast<nkentseu::NkKeyPressEvent*>(event);
+                if(keyEvent->GetKey() == nkentseu::NkKey::NK_ESCAPE) {
+                    running = false;
+                }
             }
         }
     }
