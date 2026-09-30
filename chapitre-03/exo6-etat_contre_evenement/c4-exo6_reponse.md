@@ -81,6 +81,6 @@ Compteur 2 : 4
 
 ### Explication
 
-L'écart entre les deux compteurs est énorme, en maintenant la touche plusieurs fois nous constatons que `NkKeyPressEvent` n'est valide qu'a l'appui de la touche tandis que `NkInput.IsKeyDown` est valide  tant que la touche est appuyée, tant que les touche est maintenue, un signal est émis et `NkInput.IsKeyDown` le lit constamment.
+L'écart entre les deux compteurs est énorme, en maintenant la touche plusieurs fois nous constatons que `NkKeyPressEvent` n'est valide qu'a l'appui de la touche tandis que `NkInput.IsKeyDown` est valide  tant que la touche est appuyée, tant que les touche est maintenue, un signal est émis et `NkInput.IsKeyDown` le lit constamment. En conclusion, en nous réferant au titre de l'exercice nous comprenons que `NkKeyPressEvent` se concentre sur l'évènement tandis que `NkInput.IsKeyDown` traite de l'état d'une touche du clavier.
 
 Nous noous sommes décalé de la consigne en appuyant plus d'une fois la touche car nous avions besoin de plus d'information pour nos explications.
