@@ -1,0 +1,27 @@
+La fréquence de mon écran :
+Avec l'attente de l'écran, la médiane des intervalles vaut 16.655 ms, soit
+1000 / 16.655 ≈ 60 Hz. Dans cette mesure, c'est l'écran qui fixe le rythme : la
+salle attend la synchronisation avant chaque image, et la moyenne (16.825 ms)
+reste proche de la période d'un écran à 60 Hz (16.667 ms). Mon écran tourne donc
+à 60 Hz. [Complétez : valeur lue dans les réglages de Windows, Affichage
+avancé.]
+
+La cadence que je tiens :
+Avec l'attente, la mesure ne peut pas répondre : un écran à 60 Hz plafonne la
+salle à 16.667 ms par image, au-dessus des trois budgets (13.889, 11.111 et
+8.333 ms). Seule la mesure sans attente, où la salle ne dépend plus de l'écran,
+montre ce qu'elle peut tenir : moyenne 7.230 ms et médiane 6.888 ms, soit environ
+138 images par seconde. La moyenne tient donc le budget de 120 Hz (8.333 ms) avec
+une marge de 1.1 ms. Mais le maximum (14.230 ms) dépasse les trois budgets, même
+celui de 72 Hz (13.889 ms). Je retiens 120 Hz comme cadence tenue en moyenne, et
+non image par image.
+
+Ce que dit le maximum :
+Avec l'attente, la moyenne (16.825 ms) dépasse la médiane (16.655 ms) de moins
+de 0.2 ms et laisse croire à une mesure très régulière. Le maximum (86.353 ms)
+montre le contraire : une image a duré plus de cinq périodes d'écran, soit un gel
+visible. Sans attente, le même écart apparaît à une échelle plus petite : la
+moyenne est sous le budget de 120 Hz, mais le maximum (14.230 ms) est presque
+deux fois ce budget (1.7 fois). Un casque affiche chaque image, pas la moyenne :
+une seule image trop longue est un saut visible. La moyenne ne dit donc pas
+que la cadence est tenue.
