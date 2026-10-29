@@ -1,0 +1,13 @@
+Ce qui est stable :
+Une seule chose est stable : l'écart « predit - maintenant ». Il vaut exactement la période à chaque image, 13,889 ms à 72 Hz, 16,667 ms à 60 Hz, 11,111 ms à 90 Hz et 8,333 ms à 120 Hz. Mais il l'est par construction : le programme calcule maintenant + période, donc la différence est la période elle-même. Cette constante ne prouve rien sur l'écran. Ce qui n'est pas stable, c'est le début réel des images. À 72 Hz, les intervalles entre deux « maintenant » valent 16,82, 16,26, 17,48, 15,98 ms, etc. : ils fluctuent d'environ ±1 ms autour de 16,7 ms. À 120 Hz, une image a même pris près de 48 ms (de 3319 à 3367 ms), un accroc isolé. Et surtout, « reel - predit » change avec la cadence demandée : 2,798 ms à 72 Hz, -0,007 ms à 60 Hz, 5,548 ms à 90 Hz, 8,340 ms à 120 Hz. L'écart prédit est donc constant, mais la réalité ne le suit pas, parce que le rythme réel est imposé par autre chose que ma variable MASALLE_HZ. Seule la comparaison de la prédiction avec ce qui arrive est instructive.
+
+Un divisé par la cadence :
+La période est 1 / cadence, convertie en nanosecondes (1e9 / hz) puis affichée en millisecondes. Vérification des quatre cadences : 1000 / 72 = 13,889 ms ; 1000 / 60 = 16,667 ms ; 1000 / 90 = 11,111 ms ; 1000 / 120 = 8,333 ms. Ces valeurs correspondent exactement à celles imprimées par le programme (hz = 72, periode = 13.889 ms, etc.). Plus la cadence monte, plus la période, donc le budget par image, diminue : à 120 Hz il ne reste que 8,3 ms pour tout faire.
+
+La période de mon écran :
+« reel - predit » est le début réel de l'image suivante moins (maintenant + période) de l'image d'avant. Il vaut donc (intervalle réel entre deux images) - période, et l'intervalle réel se retrouve en ajoutant la période à l'écart mesuré :
+- 72 Hz : 13,889 + 2,798 = 16,687 ms
+- 60 Hz : 16,667 + (-0,007) = 16,660 ms
+- 90 Hz : 11,111 + 5,548 = 16,659 ms
+- 120 Hz : 8,333 + 8,340 = 16,673 ms
+Les quatre valeurs sont presque identiques, quelle que soit la cadence demandée, et leur moyenne est (16,687 + 16,660 + 16,659 + 16,673) / 4 ≈ 16,67 ms. Comme 1000 / 16,67 ≈ 60 Hz, mon écran tourne à 60 Hz, et la boucle est calée sur sa synchronisation verticale : elle ne peut pas aller plus vite que lui, et il ne ralentit pas non plus pour me suivre à 72 Hz. C'est pour cela que la prédiction n'est juste qu'à 60 Hz (écart de -0,007 ms, quasi nul) : à 72, 90 et 120 Hz elle ajoute une période trop courte et prédit trop tôt de 2,8, 5,5 et 8,3 ms. La bonne valeur à mettre dans MASALLE_HZ pour mon écran est donc 60.

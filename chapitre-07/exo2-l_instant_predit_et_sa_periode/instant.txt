@@ -1,0 +1,88 @@
+====== 72 HZ =======
+hz = 72, periode = 13.889 ms, reel - predit = 2.798 ms
+maintenant = 2592.244 ms, predit = 2606.133 ms, ecart = 13.889 ms
+maintenant = 2609.064 ms, predit = 2622.952 ms, ecart = 13.889 ms
+maintenant = 2625.324 ms, predit = 2639.212 ms, ecart = 13.889 ms
+maintenant = 2642.799 ms, predit = 2656.688 ms, ecart = 13.889 ms
+maintenant = 2658.774 ms, predit = 2672.663 ms, ecart = 13.889 ms
+maintenant = 2675.297 ms, predit = 2689.186 ms, ecart = 13.889 ms
+maintenant = 2691.983 ms, predit = 2705.872 ms, ecart = 13.889 ms
+maintenant = 2708.733 ms, predit = 2722.622 ms, ecart = 13.889 ms
+maintenant = 2725.831 ms, predit = 2739.720 ms, ecart = 13.889 ms
+maintenant = 2742.498 ms, predit = 2756.387 ms, ecart = 13.889 ms
+maintenant = 2759.308 ms, predit = 2773.197 ms, ecart = 13.889 ms
+maintenant = 2776.118 ms, predit = 2790.007 ms, ecart = 13.889 ms
+maintenant = 2792.048 ms, predit = 2805.936 ms, ecart = 13.889 ms
+maintenant = 2808.921 ms, predit = 2822.809 ms, ecart = 13.889 ms
+maintenant = 2826.288 ms, predit = 2840.177 ms, ecart = 13.889 ms
+maintenant = 2842.541 ms, predit = 2856.430 ms, ecart = 13.889 ms
+maintenant = 2859.305 ms, predit = 2873.194 ms, ecart = 13.889 ms
+maintenant = 2875.549 ms, predit = 2889.438 ms, ecart = 13.889 ms
+maintenant = 2892.721 ms, predit = 2906.610 ms, ecart = 13.889 ms
+maintenant = 2909.187 ms, predit = 2923.076 ms, ecart = 13.889 ms
+====== 60 HZ =======
+hz = 60, periode = 16.667 ms, reel - predit = -0.007 ms
+maintenant = 2556.637 ms, predit = 2573.304 ms, ecart = 16.667 ms
+maintenant = 2573.384 ms, predit = 2590.050 ms, ecart = 16.667 ms
+maintenant = 2591.110 ms, predit = 2607.777 ms, ecart = 16.667 ms
+maintenant = 2606.403 ms, predit = 2623.069 ms, ecart = 16.667 ms
+maintenant = 2623.225 ms, predit = 2639.892 ms, ecart = 16.667 ms
+maintenant = 2639.860 ms, predit = 2656.527 ms, ecart = 16.667 ms
+maintenant = 2656.929 ms, predit = 2673.596 ms, ecart = 16.667 ms
+maintenant = 2673.473 ms, predit = 2690.140 ms, ecart = 16.667 ms
+maintenant = 2690.455 ms, predit = 2707.121 ms, ecart = 16.667 ms
+maintenant = 2706.452 ms, predit = 2723.119 ms, ecart = 16.667 ms
+maintenant = 2723.771 ms, predit = 2740.438 ms, ecart = 16.667 ms
+maintenant = 2739.838 ms, predit = 2756.505 ms, ecart = 16.667 ms
+maintenant = 2756.432 ms, predit = 2773.098 ms, ecart = 16.667 ms
+maintenant = 2772.941 ms, predit = 2789.608 ms, ecart = 16.667 ms
+maintenant = 2789.680 ms, predit = 2806.346 ms, ecart = 16.667 ms
+maintenant = 2806.394 ms, predit = 2823.061 ms, ecart = 16.667 ms
+maintenant = 2823.657 ms, predit = 2840.324 ms, ecart = 16.667 ms
+maintenant = 2840.332 ms, predit = 2856.999 ms, ecart = 16.667 ms
+maintenant = 2856.759 ms, predit = 2873.426 ms, ecart = 16.667 ms
+maintenant = 2873.733 ms, predit = 2890.399 ms, ecart = 16.667 ms
+====== 90 HZ =======
+hz = 90, periode = 11.111 ms, reel - predit = 5.548 ms
+maintenant = 2493.982 ms, predit = 2505.094 ms, ecart = 11.111 ms
+maintenant = 2510.698 ms, predit = 2521.809 ms, ecart = 11.111 ms
+maintenant = 2530.142 ms, predit = 2541.253 ms, ecart = 11.111 ms
+maintenant = 2543.994 ms, predit = 2555.105 ms, ecart = 11.111 ms
+maintenant = 2560.713 ms, predit = 2571.824 ms, ecart = 11.111 ms
+maintenant = 2577.465 ms, predit = 2588.576 ms, ecart = 11.111 ms
+maintenant = 2594.148 ms, predit = 2605.259 ms, ecart = 11.111 ms
+maintenant = 2610.954 ms, predit = 2622.065 ms, ecart = 11.111 ms
+maintenant = 2627.610 ms, predit = 2638.721 ms, ecart = 11.111 ms
+maintenant = 2644.735 ms, predit = 2655.846 ms, ecart = 11.111 ms
+maintenant = 2661.148 ms, predit = 2672.259 ms, ecart = 11.111 ms
+maintenant = 2678.338 ms, predit = 2689.449 ms, ecart = 11.111 ms
+maintenant = 2694.472 ms, predit = 2705.583 ms, ecart = 11.111 ms
+maintenant = 2710.991 ms, predit = 2722.102 ms, ecart = 11.111 ms
+maintenant = 2727.601 ms, predit = 2738.712 ms, ecart = 11.111 ms
+maintenant = 2744.674 ms, predit = 2755.785 ms, ecart = 11.111 ms
+maintenant = 2761.094 ms, predit = 2772.206 ms, ecart = 11.111 ms
+maintenant = 2778.122 ms, predit = 2789.233 ms, ecart = 11.111 ms
+maintenant = 2794.218 ms, predit = 2805.329 ms, ecart = 11.111 ms
+maintenant = 2811.073 ms, predit = 2822.184 ms, ecart = 11.111 ms
+====== 120 HZ =======
+hz = 120, periode = 8.333 ms, reel - predit = 8.340 ms
+maintenant = 3288.847 ms, predit = 3297.180 ms, ecart = 8.333 ms
+maintenant = 3299.223 ms, predit = 3307.556 ms, ecart = 8.333 ms
+maintenant = 3308.984 ms, predit = 3317.317 ms, ecart = 8.333 ms
+maintenant = 3319.418 ms, predit = 3327.752 ms, ecart = 8.333 ms
+maintenant = 3367.419 ms, predit = 3375.752 ms, ecart = 8.333 ms
+maintenant = 3384.605 ms, predit = 3392.938 ms, ecart = 8.333 ms
+maintenant = 3401.270 ms, predit = 3409.603 ms, ecart = 8.333 ms
+maintenant = 3417.462 ms, predit = 3425.795 ms, ecart = 8.333 ms
+maintenant = 3435.051 ms, predit = 3443.384 ms, ecart = 8.333 ms
+maintenant = 3451.414 ms, predit = 3459.747 ms, ecart = 8.333 ms
+maintenant = 3471.462 ms, predit = 3479.795 ms, ecart = 8.333 ms
+maintenant = 3483.157 ms, predit = 3491.491 ms, ecart = 8.333 ms
+maintenant = 3501.475 ms, predit = 3509.808 ms, ecart = 8.333 ms
+maintenant = 3516.636 ms, predit = 3524.969 ms, ecart = 8.333 ms
+maintenant = 3533.308 ms, predit = 3541.641 ms, ecart = 8.333 ms
+maintenant = 3550.137 ms, predit = 3558.470 ms, ecart = 8.333 ms
+maintenant = 3566.666 ms, predit = 3574.999 ms, ecart = 8.333 ms
+maintenant = 3583.384 ms, predit = 3591.717 ms, ecart = 8.333 ms
+maintenant = 3599.792 ms, predit = 3608.125 ms, ecart = 8.333 ms
+maintenant = 3616.537 ms, predit = 3624.870 ms, ecart = 8.333 ms
