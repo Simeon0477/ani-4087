@@ -1,0 +1,54 @@
+Mes trente lignes :
+trame 1 image 0
+trame 2 image 1
+trame 3 image 2
+trame 4 image 0
+trame 5 image 1
+trame 6 image 2
+trame 7 image 0
+trame 8 image 1
+trame 9 image 2
+trame 10 image 0
+trame 11 image 1
+trame 12 image 2
+trame 13 image 0
+trame 14 image 1
+trame 15 image 2
+trame 16 image 0
+trame 17 image 1
+trame 18 image 2
+trame 19 image 0
+trame 20 image 1
+trame 21 image 2
+trame 22 image 0
+trame 23 image 1
+trame 24 image 2
+trame 25 image 0
+trame 26 image 1
+trame 27 image 2
+trame 28 image 0
+trame 29 image 1
+trame 30 image 2
+
+
+Le minimum d'images :
+Une trame est en conflit si l'image qu'elle peint a été soumise par l'une des L
+trames d'avant. La trame u peint l'image (u - 1) % n : deux trames espacées de n
+trames peignent donc la même image. Il y a conflit dès que n <= L, et il n'y en a
+plus dès que n >= L + 1. Mon programme le confirme : avec L = 1, une image donne
+5 conflits sur 6 trames et deux images en donnent 0 ; avec L = 2, deux images donnent
+4 conflits sur 6 trames et trois images en donnent 0. Le minimum d'images vaut donc
+L + 1 : une image pour L = 0, deux pour L = 1, trois pour L = 2.
+
+Sur le simulateur :
+le compositeur lit l'image après le rendu : L vaut 0, et le
+minimum d'images vaut 1. Aucun scénario n'y produit de conflit, même avec une seule
+image. Le cycle de trois images n'y apporte donc rien de visible : l'image est déjà
+finie quand elle est lue, et la salle ne va pas plus vite avec trois images qu'avec
+une. Mes trente lignes montrent seulement que le code sait tourner sur trois
+emplacements. Elles viennent d'un compteur modulo 3 dans ma boucle, pas d'une vraie
+chaîne d'échange. Ce que le cycle apporte, c'est la discipline : mon code est écrit
+comme avec un vrai casque, où le compositeur garde chaque image plusieurs trames
+(L = 2 exige trois images). Le jour où un runtime fournira les images, ce code
+continuera de marcher. Mon journal indique d'ailleurs que le périphérique Vulkan
+fonctionne déjà avec 3 images en vol (« 3 frames in flight »).

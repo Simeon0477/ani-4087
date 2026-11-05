@@ -1,0 +1,41 @@
+La relation :
+Chaque emprunt réussi doit être suivi d'une libération. À tout instant, le nombre
+d'emprunts réussis moins le nombre de libérations vaut 0 (rien n'est emprunté) ou 1
+(une image est encore empruntée). Un emprunt refusé n'entre pas dans cette
+différence : il ne prend rien à la chaîne. Si l'image reste empruntée, tous les
+emprunts suivants sont refusés. Dans l'exemple de dix trames, il y a 5 emprunts
+réussis, 4 libérations et un écart de 1, et la trame 5 sort sans rendre l'image :
+les 5 trames suivantes sont bloquées, avec 6 refus au total (5 trames bloquées et le
+second emprunt de la trame 3).
+
+Mes trois nombres :
+Sur une minute de ma boucle de rendu : 
+REUSSIES 3581
+REFUSEES 0
+LIBERATIONS 3581
+ECART 0
+Un écart de 0 veut dire que chaque image empruntée a été rendue : il ne
+reste aucune image empruntée à l'arrêt. Zéro refus veut dire que BeginFrame n'a
+jamais été refusé, donc qu'aucune fuite n'a bloqué la chaîne. 3581 images en 60
+secondes donnent environ 59,7 images par seconde, ce qui correspond à mon écran à
+60 Hz (période d'environ 16,67 ms).
+
+Le chemin qui fuit :
+Ma boucle ne fuit pas : le seul chemin qui suit BeginFrame passe par Present puis
+EndFrame, sans break, continue ni return entre les deux. Les deux break de ma
+boucle (la limite d'une minute et MASALLE_EXIT) et le break de la fermeture de la
+fenêtre sont avant BeginFrame, donc ils ne laissent aucune image empruntée. Voici le
+chemin qui fuirait :
+
+    if (rEcran->BeginFrame()) {
+        if (erreur) {
+            continue;          // sort sans EndFrame : l'image reste empruntée
+        }
+        ...
+        rEcran->EndFrame();
+    }
+
+Après ce continue, l'image n'est jamais rendue. La trame suivante appelle BeginFrame,
+qui est refusé, et il en va de même de toutes les suivantes : plus aucune trame ne
+dessine. Le compteur d'emprunts réussis dépasse celui des libérations de 1, et les
+refus s'accumulent à chaque trame.

@@ -65,6 +65,6 @@ int main() {
 
     std::cout << "SOUMISES " << soumises << "\n";
     std::cout << "REFUS " << refus << "\n";
-    std::cout << "HORS EMPRUNT " << horsEmprunt << "\n";
+    std::cout << "HORS EMPRUNT " << horsEmprunt;
     return 0;
 }

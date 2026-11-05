@@ -74,6 +74,6 @@ int main() {
     }
 
     std::cout << "IMAGES " << imagesDessinees << "\n";
-    std::cout << "ETAT " << (fige ? "BLOQUE" : "LIBRE") << "\n";
+    std::cout << "ETAT " << (fige ? "BLOQUE" : "LIBRE");
     return 0;
 }
