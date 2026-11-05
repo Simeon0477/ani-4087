@@ -1,0 +1,25 @@
+Avec deux images :
+1 10 -
+2 10 0
+3 30 20
+4 30 0
+5 50 20
+6 50 0
+7 70 20
+8 70 0
+SAUT MIN 0
+SAUT MAX 20
+TREMBLE OUI
+
+Avec une image :
+1 10 -
+2 20 10
+3 30 10
+4 40 10
+5 50 10
+6 60 10
+7 70 10
+8 80 10
+SAUT MIN 10
+SAUT MAX 10
+TREMBLE NON

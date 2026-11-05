@@ -1,0 +1,40 @@
+Images paires et impaires :
+Avec deux images et la suite DPDPDPDP, les trames impaires (mode D) lisent l'index
+après la libération : l'index soumis désigne l'image qu'on vient de peindre. Elles
+montrent la bonne position : 30 mm à la trame 3, 50 mm à la trame 5, 70 mm à la
+trame 7 (la trame 1 montre 10 mm). Les trames paires (mode P) lisent l'index avant
+la libération : il désigne l'image de la trame d'avant. Elles montrent donc encore
+la position de la trame précédente : 10 mm à la trame 2 (au lieu de 20), 30 mm à la
+trame 4 (au lieu de 40), 50 mm à la trame 6 (au lieu de 60) et 70 mm à la trame 8
+(au lieu de 80). Les sauts alternent entre 0 sur les trames paires et 20 sur les
+trames impaires, alors que la caméra avance de 10 mm par trame : SAUT MIN 0, SAUT
+MAX 20, TREMBLE OUI. L'oeil voit une image immobile, puis un saut double.
+
+Avec une seule image :
+Sortie avec n = 1 et la même suite DPDPDPDP :
+1 10 -
+2 20 10
+3 30 10
+4 40 10
+5 50 10
+6 60 10
+7 70 10
+8 80 10
+SAUT MIN 10
+SAUT MAX 10
+TREMBLE NON
+Avec une seule image, la prochaine image vaut toujours 0 et (0 + 1 - 1) % 1 vaut 0.
+Les trois modes désignent le même emplacement, qui contient la trame qu'on vient de
+peindre. Tous les sauts valent 10 : rien ne tremble. La même suite de lettres qui
+fait trembler l'image à deux emplacements ne montre aucun défaut ici. Le bogue est
+donc invisible sur un simulateur qui n'a qu'une image.
+
+La bonne lecture :
+Il faut lire l'index de la dernière image relâchée après ReleaseImage. ReleaseImage
+fait avancer la prochaine image ; la formule (prochaine + n - 1) % n recule ensuite
+d'un cran et désigne l'image qu'on vient de rendre, c'est-à-dire celle qu'on vient
+de peindre. Lue avant ReleaseImage, la même formule désigne l'image de la trame
+d'avant. Si l'on lit toujours après (mode D à chaque trame), les sauts valent tous
+10 et la caméra ne tremble pas. Si l'on lit toujours avant (mode P), le retard
+d'une trame est constant et ne tremble pas non plus : c'est l'alternance entre les
+deux lectures qui fait trembler, une trame sur deux.

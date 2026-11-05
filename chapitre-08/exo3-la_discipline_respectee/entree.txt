@@ -1,0 +1,13 @@
+2 12
+acquire
+draw
+release
+submit
+acquire
+acquire
+draw
+submit
+release
+submit
+submit
+draw

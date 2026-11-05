@@ -1,0 +1,11 @@
+2 10
+cree 7
+cree 140737488355328
+set 0 7
+set 1 140737488355328
+set 2 9
+get 0
+get 1
+detruit 7
+get 0
+get 3

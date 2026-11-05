@@ -1,0 +1,10 @@
+3 99 9
+last
+acquire a
+acquire b
+release
+release
+last
+acquire a
+acquire b
+last

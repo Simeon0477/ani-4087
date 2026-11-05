@@ -1,0 +1,9 @@
+1280 720 2 8
+image
+cible 640 720
+allume OFFSCREEN
+cible 640 720
+vers 1
+image
+image
+image

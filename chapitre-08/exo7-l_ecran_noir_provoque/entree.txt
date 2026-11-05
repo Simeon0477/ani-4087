@@ -1,0 +1,10 @@
+9
+cible 1440 1584
+chaine
+enregistre
+image
+cible 1600 1760
+chaine
+image
+enregistre
+image
