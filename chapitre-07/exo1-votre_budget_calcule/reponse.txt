@@ -3,8 +3,7 @@ Avec l'attente de l'écran, la médiane des intervalles vaut 16.655 ms, soit
 1000 / 16.655 ≈ 60 Hz. Dans cette mesure, c'est l'écran qui fixe le rythme : la
 salle attend la synchronisation avant chaque image, et la moyenne (16.825 ms)
 reste proche de la période d'un écran à 60 Hz (16.667 ms). Mon écran tourne donc
-à 60 Hz. [Complétez : valeur lue dans les réglages de Windows, Affichage
-avancé.]
+à 60 Hz. La valeur exacte est 60.03 Hz.
 
 La cadence que je tiens :
 Avec l'attente, la mesure ne peut pas répondre : un écran à 60 Hz plafonne la
