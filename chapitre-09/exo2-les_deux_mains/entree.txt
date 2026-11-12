@@ -1,0 +1,9 @@
+4 4
+tirer SELECT
+saisir_g GRAB_LEFT
+avancer MOVE
+vibrer HAPTIC
+0
+2 SOURIS_G F_HAUT
+3 MAJ_G Z F_GAUCHE
+2 F_DROITE F_GAUCHE

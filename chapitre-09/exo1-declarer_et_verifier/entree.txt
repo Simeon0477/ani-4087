@@ -1,0 +1,12 @@
+11
+cree tirer BOOL SELECT
+cree saisir BOOL GRAB
+cree menu BOOL MENU
+cree avancer VEC2 MOVE
+attache
+cree paume POSE GRIP_POSE
+attache
+lit 0
+lit 2
+lit 5
+lit 6

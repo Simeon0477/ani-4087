@@ -1,0 +1,26 @@
+Décalage ou tête :
+Mon programme ne touche jamais à la pose de la tête. À chaque image, il ajoute au
+décalage du joueur le vecteur v × (y × avant + x × droite), où l'avant et la droite
+sont calculés à partir du lacet de la tête. Le joueur se déplace donc par rapport au
+monde, et la tête garde la pose que lui donne le casque. Ma sortie montre que le
+lacet est pris en compte : la même flèche HAUT pousse vers les z négatifs à l'image 1
+(lacet 0, décalage 0 -10) et vers les x négatifs à l'image 3 (lacet 1, le décalage
+passe de 10 -20 à 0 -20). Après mes six images, le décalage final vaut (10, -20).
+
+Ce que la tête casserait :
+La pose de la tête vient du casque, et la prédiction de l'instant d'affichage s'en
+sert. Si j'y écrivais, mon déplacement se battrait avec le suivi : à la
+synchronisation suivante, le casque remettrait sa valeur, ou ma valeur fausserait la
+prédiction, qui partirait d'une position que la tête n'a pas. L'image serait calculée
+pour une tête qui n'est pas là où elle est vraiment. Avec un décalage du monde, la
+tête reste la mesure du capteur, et le déplacement s'y ajoute au moment du rendu.
+
+Les diagonales :
+À l'image 2, mes flèches HAUT et DROITE donnent x = 1 et y = 1 (ma sortie affiche
+2 1,1 10 -20). Le décalage passe alors de (0, -10) à (10, -20) : le pas vaut (10, -10),
+de longueur 10 × racine(2) ≈ 14,1 mm, contre 10 mm en ligne droite. Dans ce modèle,
+le joueur va donc racine(2) ≈ 1,41 fois plus vite en diagonale, soit environ 41 % de
+plus. C'est la seule image de mon scénario où x et y sont tous deux non nuls, d'où
+DIAGONALES 1. Pour l'éviter, il faut normaliser le manche : quand la longueur
+racine(x² + y²) dépasse 1, on divise x et y par cette longueur. Une diagonale pleine
+donne alors (0,71 ; 0,71) et un pas de v, comme en ligne droite.

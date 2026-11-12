@@ -1,0 +1,33 @@
+La distance :
+Dans le repère de la tête, la paume droite est en (180, -300, -250) et la visée droite
+en (180, -250, -400). La différence est (0, 50, -150), donc la distance vaut
+racine(0² + 50² + 150²) = racine(25000) ≈ 158,1 mm. Mon programme affiche ECART 158.
+La visée est 150 mm plus loin devant la paume et 50 mm plus haut. Cet écart ne dépend
+pas de la tête : les deux poses gardent l'orientation de la tête et tournent avec elle,
+et une rotation ne change pas la distance entre deux points. On le voit dans ma
+sortie : à la tête 1, la paume et la visée droites sont à (180, 1400, -250) et
+(180, 1450, -400), et à la tête 3 elles sont à (250, 1400, 180) et (400, 1450, 180).
+
+L'angle :
+Dans ce simulateur, l'angle entre les deux directions avant vaut 0 degré. La paume et
+la visée gardent toutes les deux l'orientation de la tête, donc leurs directions avant
+sont les mêmes que celle de la tête. Le simulateur ne modélise pas la façon dont une
+manette est tenue : il place deux points dans le repère de la tête. Sur un vrai
+casque, ce ne serait pas la même chose. La paume suit l'endroit où l'objet tenu se
+trouve physiquement, tandis que la visée est calibrée par le constructeur pour que le
+pointage paraisse naturel : ce sont deux poses qui ne sont ni au même endroit ni
+orientées pareil. Leur angle n'est donc pas forcément nul. Je ne connais pas sa valeur
+pour un casque précis.
+
+Pour pointer :
+Pour pointer, il faut la visée, et la paume pour tenir. Ma sortie le montre à la tête 1 :
+la paume saisit l'objet 1, qui est à 35 mm de la main (distance au carré 1200), alors
+que la visée saisit l'objet 2, qui est à 80 mm devant elle (distance au carré 6400).
+L'objet 1 est hors de portée de la visée (environ 185 mm) et l'objet 2 est hors de
+portée de la paume (environ 235 mm) : les deux poses désignent donc deux objets
+différents, et un objet dans la main peut être hors de portée du pointage. Si je
+pointais avec la paume, le rayon partirait de la main et irait de travers. Si je
+tenais un objet avec la visée, il flotterait à quelques centimètres de la main. À la
+tête 3, les deux poses saisissent le même objet 4 (à environ 54 mm de la paume et
+114 mm de la visée) : c'est un hasard de position, pas une raison de les confondre.
+À la tête 2, aucune des deux n'atteint un objet.

@@ -1,0 +1,32 @@
+Ce qui change :
+Seule la table de correspondance change : la liste de lignes « USAGE COMMANDE » que mon
+programme lit sur l'entrée et range dans une table usage -> commande (la variable
+table, dans JouerUneTable). La seconde table remplace SOURIS_G par ESPACE et SOURIS_D
+par E, et le reste du programme n'a pas bougé : la sortie est identique (IDENTIQUES
+OUI). Sur un vrai casque, ce morceau serait remplacé par la traduction que le backend
+fait entre l'usage et les boutons du matériel branché ; la déclaration des actions, la
+détection de l'appui et l'affichage resteraient exactement les mêmes.
+
+Aucun nom de bouton :
+Mon programme ne contient aucun nom de bouton ni de touche. Voici le seul endroit où
+une commande est utilisée :
+
+    const auto it = table.find(actions[i].usage);
+    const bool appuyee = (it != table.end()) && (tenues.count(it->second) > 0);
+
+Il cherche l'usage de l'action dans la table, puis regarde si la commande trouvée fait
+partie des commandes tenues pendant l'image. Les noms SOURIS_G, SOURIS_D, TAB, ESPACE
+et E n'existent que dans le fichier d'entrée. Je l'ai vérifié en cherchant ces mots
+dans mon code source avec Select-String : SOURIS_G, SOURIS_D, SOURIS_M et ESPACE ne
+s'y trouvent pas. La seule occurrence de TAB est à l'intérieur du mot TABLE, dans le
+commentaire de la fonction et dans la ligne affichée "TABLE 1" que l'énoncé impose :
+ce n'est pas un nom de touche.
+
+L'action inactive :
+L'action saisir_g, d'usage GRAB_LEFT, est inactive dans les deux tables : aucune
+ligne ne lie GRAB_LEFT à une commande. Elle n'a donc aucune source matérielle, et mon
+programme affiche INACTIVE saisir_g une fois par table. Elle ne fait jamais d'appui :
+aucun numéro d'image n'affiche son nom. Elle rendrait active faux et current faux, ce
+qui ne se distingue pas d'un bouton relâché si on ne le journalise pas. Sur un vrai
+casque ce serait pareil, par exemple pour une manette éteinte ou un usage que le
+matériel ne propose pas.
