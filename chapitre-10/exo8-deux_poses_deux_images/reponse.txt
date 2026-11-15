@@ -1,0 +1,31 @@
+Négligeable :
+Sur mes cinq images, l'écart de position vaut 5, 0, 13, 0 et 10 mm : 5 mm en moyenne
+(MOYENNE POSITION 5) et 13 mm au pire. L'écart de lacet vaut 1100, 0, 2200, 0 et 550
+millièmes de degré, soit 1,10°, 0°, 2,20°, 0° et 0,55° : 770 millièmes en moyenne
+(0,77°) et 2,2° au pire. La position est petite : quelques millimètres, 1,3 cm au plus.
+Je ne juge pas l'angle négligeable : deux images sur cinq dépassent un degré, et la
+moyenne cache le pire, parce que les deux images où la tête est immobile comptent pour
+zéro. Le chapitre donne un cas à 1,4° par trame, qui fait glisser le monde à 72 trames
+par seconde. La vitesse moyenne de ma tête est de 70 degrés par seconde.
+
+Seuil :
+L'écart de lacet vaut la vitesse multipliée par le temps entre le rendu et la fin de
+trame. Avec d = 11 ms, soit 0,011 s :
+    écart en degrés = w × 0,011
+Il dépasse un degré quand w × 0,011 > 1, donc quand w > 1 / 0,011 ≈ 90,9 degrés par
+seconde. Au-dessus d'environ 91 degrés par seconde, le lacet relu à la fin de trame
+diffère de plus d'un degré du lacet du rendu. Mes cinq images le confirment : les
+vitesses par image valent 1100 / 11 = 100, 0, 2200 / 11 = 200, 0 et 550 / 11 = 50
+degrés par seconde, et seules les images à 100 et 200 degrés par seconde dépassent un
+degré. Ma moyenne de 70 degrés par seconde est sous le seuil, mais elle cache ces
+deux images.
+
+Ce que corrige le compositeur :
+Entre le calcul des matrices et la fin de trame, la tête a encore bougé. Le compositeur
+d'un casque calcule l'écart entre la pose avec laquelle l'image a été dessinée, la pose
+du rendu, et la vraie pose de la tête au moment de l'affichage, puis il décale l'image
+de cet écart : c'est la reprojection. L'écart que je mesure entre ma première pose et
+ma seconde donne l'ordre de grandeur de ce qu'il a à corriger. Pour que cela marche, la
+couche doit porter la pose du rendu (ma première pose), et non la pose relue à la fin de
+trame (la seconde). Avec la seconde, le compositeur croirait l'image vue de là et
+corrigerait de travers : le monde glisserait au lieu d'être recalé.

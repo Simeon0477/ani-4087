@@ -1,0 +1,31 @@
+Ce que le simulateur dit :
+Mon programme marque DIT pour trois des applications : celles qui n'appellent pas EndFrame
+à chaque trame, et celle dont une chaîne manque. L'application 2 (JAMAIS) et l'application
+3 (SI_RENDU) laissent une trame ouverte : la session compte les trames, attend une fin
+pour chaque début, et refuse l'attente et le début suivants, comme dans mon exercice
+sur le blocage, où chaque refus est écrit au journal. L'application 4 (TOUJOURS, œil droit
+sans chaîne) reçoit un avertissement à la fin de trame : le simulateur signale tout de
+suite qu'une couche de projection n'a pas de chaîne pour un œil. Sur un casque, ces trois
+applications donneraient respectivement FIGE, NE_REPART_PAS et OEIL_NOIR_D.
+
+Ce qu'il tait :
+Les applications 5 et 6 sont muettes : MUETTES 2. L'application 5 soumet l'instant courant
+au lieu de l'instant prédit : TREMBLE sur un casque. L'application 6 relit la pose au lieu
+de donner celle du rendu et déclare le mauvais espace : DE_TRAVERS et DECALE sur un casque.
+Le simulateur ne peut pas les voir, parce qu'il ne compose rien et ne reprojette rien : une
+pose, un instant ou un espace faux n'y change aucun résultat. Dans mon exercice sur le mauvais
+instant, la colonne du simulateur ne dépend pas de la pose soumise ; dans celui sur le mauvais
+espace, la faute ne produit aucune erreur. Seul le compositeur d'un casque compare ces valeurs
+à la vraie tête, donc seul un casque révèle ces fautes. L'application 1 n'est pas muette :
+elle n'a aucun symptôme, donc rien à dire.
+
+Plus sévère :
+Un simulateur est utilisé sur un bureau, sans casque : une faute qu'il laisse passer ne se
+verra que sur la tête de l'utilisateur, au pire moment. Il doit donc signaler des fautes qu'il
+pourrait ignorer sans conséquence pour lui. Ma sortie en donne un exemple : à l'application
+4, le simulateur ne compose rien, donc une chaîne absente ne lui coûte rien, et pourtant il
+écrit quelque chose (4 SIMULATEUR DIT), alors que le casque montrerait un œil noir. Un
+simulateur permissif laisserait écrire du code qui ne marche que chez lui. Sa sévérité a une
+limite que ma sortie montre aussi : sur les cinq applications qui ont un symptôme sur un
+casque, deux restent muettes, parce que les fautes d'instant, de pose et d'espace demandent
+une reprojection qu'il ne fait pas.

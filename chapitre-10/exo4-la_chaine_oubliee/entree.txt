@@ -1,0 +1,13 @@
+2 12
+wait
+begin
+acquire G
+release G
+acquire D
+release D
+end 1 1
+wait
+begin
+acquire G
+release G
+end 1 0
